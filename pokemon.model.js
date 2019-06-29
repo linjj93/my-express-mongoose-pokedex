@@ -19,4 +19,4 @@ const pokemonSchema = Schema({
   }
 });
 
-mongoose.model("pokemon", pokemonSchema);
+mongoose.model("Pokemon", pokemonSchema);
