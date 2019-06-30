@@ -9,12 +9,14 @@ const flatten = require("flat");
 // router.use(express.json());
 
 router.get("/", async (req, res) => {
-  const foundPokemon = await Pokemon.find();
+  const foundPokemon = await Pokemon.find().catch(err => next(err));
   res.status(200).json(foundPokemon);
 });
 
 router.get("/:id", async (req, res) => {
-  const foundPokemon = await Pokemon.findOne({ id: req.params.id });
+  const foundPokemon = await Pokemon.findOne({ id: req.params.id }).catch(err =>
+    next(err)
+  );
   res.status(200).json(foundPokemon);
 });
 
@@ -37,7 +39,7 @@ router.put("/:id", async (req, res, next) => {
 
 router.delete("/:id", async (req, res) => {
   const deletedPokemon = await Pokemon.findOne({ id: req.params.id });
-  await Pokemon.deleteOne({ id: req.params.id });
+  await Pokemon.deleteOne({ id: req.params.id }).catch(err => next(err));
   res.status(200).json(deletedPokemon);
 });
 
