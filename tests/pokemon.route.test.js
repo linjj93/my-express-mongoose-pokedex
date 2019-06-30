@@ -33,7 +33,6 @@ describe("Pokemon", () => {
     expect(response.text).toEqual("Hello World!");
   });
 
-  const getPokemonData = index => pokemonData.slice(index, index + 1)[0];
 
   describe("/pokemon", () => {
     it("GET / should find all pokemon", async () => {
